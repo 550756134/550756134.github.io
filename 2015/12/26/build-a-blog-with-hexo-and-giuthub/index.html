@@ -1,0 +1,467 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="特仑苏的学习笔记">
+    <title>使用Hexo和Github创建博客 - 特仑苏的学习笔记</title>
+    <meta name="author" content="特仑苏">
+    
+    
+        <link rel="icon" href="http://550756134.github.io/assets/images/favicon.ico">
+    
+    
+    <meta name="description" content="突然间心血来潮，想要建一个自己的博客，于是开始找资料，最后决定使用Hexo+Github的方式搭建一个博客，用来记录我的学习历程，毕竟学了不拍照就浪费了呀o(*≧▽≦)ツ 。">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="使用Hexo和Github创建博客">
+<meta property="og:url" content="http://550756134.github.io/2015/12/26/build-a-blog-with-hexo-and-giuthub/index.html">
+<meta property="og:site_name" content="特仑苏的学习笔记">
+<meta property="og:description" content="突然间心血来潮，想要建一个自己的博客，于是开始找资料，最后决定使用Hexo+Github的方式搭建一个博客，用来记录我的学习历程，毕竟学了不拍照就浪费了呀o(*≧▽≦)ツ 。">
+<meta property="og:updated_time" content="2016-04-25T13:27:17.481Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Hexo和Github创建博客">
+<meta name="twitter:description" content="突然间心血来潮，想要建一个自己的博客，于是开始找资料，最后决定使用Hexo+Github的方式搭建一个博客，用来记录我的学习历程，毕竟学了不拍照就浪费了呀o(*≧▽≦)ツ 。">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://550756134.github.io/assets/images/misaka.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-xo7nhpmdpc1dtnu6v2tbazfirrvymcon1vt4izjnjydyzn2wo9jwylinqzgi.min.css">
+    <!--STYLES END-->
+    
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">特仑苏的学习笔记</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="#search">
+        
+        
+            <img class="header-picture" src="/assets/images/misaka.jpg"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/misaka.jpg"/>
+            </a>
+            <span class="sidebar-profile-name">特仑苏</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-circle-thin"></i>
+                    <span class="sidebar-button-desc">首页</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">标签</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bars"></i>
+                    <span class="sidebar-button-desc">归档</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/550756134" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            使用Hexo和Github创建博客
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Sat Dec 26 2015 20:48:07 GMT+0800">
+	
+		    12月 26, 2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>　　突然间心血来潮，想要建一个自己的博客，于是开始找资料，最后决定使用Hexo+Github的方式搭建一个博客，用来记录我的学习历程，毕竟学了不拍照就浪费了呀o(*≧▽≦)ツ 。</p>
+<a id="more"></a>
+<h1 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h1><ul>
+<li><a href="https://git-scm.com/" target="_blank" rel="external">Git</a></li>
+<li><a href="https://nodejs.org/" target="_blank" rel="external">Node.js</a></li>
+<li><a href="https://github.com/" target="_blank" rel="external">Github</a></li>
+</ul>
+<h1 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h1><p>安装<a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>非常的简单，打开GitBash，执行命令：</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-<span class="keyword">cli</span> -g</div></pre></td></tr></table></figure>
+<p>稍等片刻就可以完成安装。</p>
+<h1 id="建立博客"><a href="#建立博客" class="headerlink" title="建立博客"></a>建立博客</h1><p>使用init命令建立博客：</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init <span class="string">[folder]</span></div></pre></td></tr></table></figure>
+<p>其中folder是可选项，如果没有设置，就默认在当前目录下建立博客。</p>
+<p>成功后会提示：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">INFO  Copying data <span class="keyword">to</span> [你建立博客的路径]</div><div class="line">INFO  You are almost done! Don't forget <span class="keyword">to</span> <span class="built_in">run</span> 'npm install' <span class="keyword">before</span> you start blogging <span class="keyword">with</span> Hexo!</div></pre></td></tr></table></figure>
+<p>然后到你建立博客的目录下执行命令安装依赖：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm <span class="keyword">install</span></div></pre></td></tr></table></figure>
+<p>建立完成后，建立的博客目录如下：</p>
+<pre><code>.
+├── _config.yml
+├── package.json
+├── db.json
+├── .gitignore
+├── node_modules
+├── scaffolds
+├── source
+|   └── _posts
+└── themes
+</code></pre><p>上面的目录是我自己创建时的目录，和官网有些出入，<a href="https://hexo.io/docs/setup.html" target="_blank" rel="external">官网文档</a>在此。</p>
+<h1 id="本地运行"><a href="#本地运行" class="headerlink" title="本地运行"></a>本地运行</h1><p>到现在都还不知道自己的博客长什么样，先本地跑一下看看吧，执行命令：</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo <span class="keyword">server</span></div></pre></td></tr></table></figure>
+<p>当然这个命令可以简化成：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>hexo s</div></pre></td></tr></table></figure>
+<p>成功启动的话就会有如下提示：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INFO  Hexo is running <span class="keyword">at</span> <span class="keyword">http</span>://<span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">4000</span>/. Press Ctrl+C <span class="built_in">to</span> <span class="built_in">stop</span>.</div></pre></td></tr></table></figure>
+<p>如果想要停止服务的话在命令行连续按两下Ctrl+C就可以了。</p>
+<p>虽然提示Hexo运行在<a href="0.0.0.0:4000" target="_blank" rel="external">0.0.0.0:4000</a>，但是我在用浏览器打开0.0.0.0:4000时返回的是502Bad Gateway。</p>
+<p>但是用<a href="localhost:4000" target="_blank" rel="external">localhost:4000</a>或<a href="127.0.0.1:4000" target="_blank" rel="external">127.0.0.1:4000</a>打开就可以看到我们建立的博客了。</p>
+<p>查看<a href="https://hexo.io/zh-cn/docs/commands.html#server" target="_blank" rel="external">官网文档</a>发现一句：</p>
+<blockquote>
+<p>默认情况下，访问网址为：<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> 。</p>
+</blockquote>
+<p>现在我们就有了个人博客单机版了！！！</p>
+<p>先激动一小会，然后继续。(oﾟ▽ﾟ)o</p>
+<h1 id="部署到Github"><a href="#部署到Github" class="headerlink" title="部署到Github"></a>部署到Github</h1><p>既然要部署到Github，那么就要先建立一个Github的仓库，仓库名是有固定写法的，格式为：用户名.github.io。比如，我的用户名是<code>550756134</code>，那么我就要给我的仓库起名为<code>550756134.github.io</code>。</p>
+<p>用你喜欢的编辑器打开_config.yml，在文件的最下面会发现：</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># Deployment</span></div><div class="line"><span class="meta">## Docs: http:<span class="comment">//hexo.io/docs/deployment.html</span></span></div><div class="line"><span class="symbol">deploy:</span></div><div class="line"><span class="symbol">  type:</span></div></pre></td></tr></table></figure>
+<p>我们来添加几个参数：</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># Deployment</span></div><div class="line"><span class="meta">## Docs: http:<span class="comment">//hexo.io/docs/deployment.html</span></span></div><div class="line"><span class="symbol">deploy:</span></div><div class="line"><span class="symbol">  type:</span> git</div><div class="line"><span class="symbol">  repository:</span> git@github.com:<span class="number">550756134</span>/<span class="number">550756134.</span>github.io.git</div><div class="line"><span class="symbol">  branch:</span> master</div></pre></td></tr></table></figure>
+<p>注意！<code>repository:</code>后面写上你自己博客仓库的url，<code>repository:</code>和url之间有一个空格。</p>
+<p>然后执行命令：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>hexo deploy</div></pre></td></tr></table></figure>
+<p>当然也能简写成：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>hexo d</div></pre></td></tr></table></figure>
+<p>可是，我在这一步时遇到了：</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ERROR </span>Deployer not found: git</div></pre></td></tr></table></figure>
+<p>经过搜索，找到了解决方法，执行命令：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></div></pre></td></tr></table></figure>
+<p>然后再试着部署一遍，成功！！！</p>
+<p>再等待一会直接访问 你的用户名.github.io，就可以看见你新创建的博客了！！！</p>
+<p>#新建文章<br>当然，有了博客第一件事当然要写一些东西啦。</p>
+<p>所以，在博客目录下执行：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo <span class="keyword">new</span> <span class="string">"hello world"</span></div></pre></td></tr></table></figure>
+<p>那么我们就可以新建一个名为”hello world”的文章，那么这篇文章在哪里呢？</p>
+<p>执行这个命令后，Hexo就会根据你的模板在你博客目录下的/source/_posts文件夹下生成一个hello-world.md，这个就是你文章的markdown文件了。对markdown的语法不熟悉的请戳这里→<a href="https://www.baidu.com/s?wd=markdown%E8%AF%AD%E6%B3%95" target="_blank" rel="external">markdown</a></p>
+<p>当你执行：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo <span class="keyword">generate</span></div></pre></td></tr></table></figure>
+<p>也可以简成：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>hexo g</div></pre></td></tr></table></figure>
+<p>这个命令时，在source文件夹下，除 _posts 文件夹之外，开头命名为 _ (下划线)的文件 / 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。</p>
+<p>这时你的静态页面就生成完成了。</p>
+<p>本地部署一下看看效果，修改下就可以提交到Github了。</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">标签</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/github/">github</a> <a class="tag tag--primary tag--small t-link" href="/tags/hexo/">hexo</a> <a class="tag tag--primary tag--small t-link" href="/tags/笔记/">笔记</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/04/25/i-am-lazy/"  data-tooltip="我好懒_(:3」∠)_">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/26/hello-world/" data-tooltip="Hello World">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://550756134.github.io/2015/12/26/build-a-blog-with-hexo-and-giuthub/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <!-- <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://550756134.github.io/2015/12/26/build-a-blog-with-hexo-and-giuthub/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li> -->
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://550756134.github.io/2015/12/26/build-a-blog-with-hexo-and-giuthub/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <!-- <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享到微信" href="http://www.jiathis.com/send/?webid=weixin&amp;url=http://550756134.github.io/2015/12/26/build-a-blog-with-hexo-and-giuthub/&amp;title=使用Hexo和Github创建博客&amp;uid=2110308"> -->
+            <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享到微信" href="http://api.bshare.cn/share/weixin?url=http://550756134.github.io/2015/12/26/build-a-blog-with-hexo-and-giuthub/">
+                <i class="fa fa-weixin"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+        
+            
+        
+    </div>
+</article>
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2016 特仑苏. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/04/25/i-am-lazy/"  data-tooltip="我好懒_(:3」∠)_">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/26/hello-world/" data-tooltip="Hello World">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://550756134.github.io/2015/12/26/build-a-blog-with-hexo-and-giuthub/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <!-- <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://550756134.github.io/2015/12/26/build-a-blog-with-hexo-and-giuthub/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li> -->
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://550756134.github.io/2015/12/26/build-a-blog-with-hexo-and-giuthub/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <!-- <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享到微信" href="http://www.jiathis.com/send/?webid=weixin&amp;url=http://550756134.github.io/2015/12/26/build-a-blog-with-hexo-and-giuthub/&amp;title=使用Hexo和Github创建博客&amp;uid=2110308"> -->
+            <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享到微信" href="http://api.bshare.cn/share/weixin?url=http://550756134.github.io/2015/12/26/build-a-blog-with-hexo-and-giuthub/">
+                <i class="fa fa-weixin"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://550756134.github.io/2015/12/26/build-a-blog-with-hexo-and-giuthub/">
+                <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
+            </a>
+        </li>
+        <!-- <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://550756134.github.io/2015/12/26/build-a-blog-with-hexo-and-giuthub/">
+                <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+            </a>
+        </li> -->
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://550756134.github.io/2015/12/26/build-a-blog-with-hexo-and-giuthub/">
+                <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+            </a>
+        </li>
+        <!-- <li class="share-option">
+            <a class="share-option-btn" target="new" href="http://www.jiathis.com/send/?webid=weixin&amp;url=http://550756134.github.io/2015/12/26/build-a-blog-with-hexo-and-giuthub/&amp;title=使用Hexo和Github创建博客&amp;uid=2110308">
+                <i class="fa fa-weixin"></i><span>分享到微信</span>
+            </a>
+        </li> -->
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/misaka.jpg"/>
+        
+            <h4 id="about-card-name">特仑苏</h4>
+        
+            <h5 id="about-card-bio"><p>不是牛奶！</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>学生仔</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                China
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('http://7xpjoh.com1.z0.glb.clouddn.com/theme-source/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/scrip-xjvo1pxsqdqob5t3wfpikh7pixrueadcs1qcwelnnoo0hany8oidadyfbqpf.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+</html>

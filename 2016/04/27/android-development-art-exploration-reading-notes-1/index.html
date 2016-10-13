@@ -1,0 +1,467 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="特仑苏的学习笔记">
+    <title>《Android开发艺术探索》笔记 1 - 特仑苏的学习笔记</title>
+    <meta name="author" content="特仑苏">
+    
+    
+        <link rel="icon" href="http://550756134.github.io/assets/images/favicon.ico">
+    
+    
+    <meta name="description" content="终于开始动手写博客啦，那么就先从《Android开发艺术探索》这本书开始读吧，主要还是做笔记，还会参照一些别的材料一起读，也会有自己的一些感想，可能会有很多错误，欢迎指正（然而懒惰的我并没有为博客开通评论的功能(*/ω＼*)）。这本书的第一章讲的是Android中Activity的生命周期和启动模式。o(*≧▽≦)ツ">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="《Android开发艺术探索》笔记 1">
+<meta property="og:url" content="http://550756134.github.io/2016/04/27/android-development-art-exploration-reading-notes-1/index.html">
+<meta property="og:site_name" content="特仑苏的学习笔记">
+<meta property="og:description" content="终于开始动手写博客啦，那么就先从《Android开发艺术探索》这本书开始读吧，主要还是做笔记，还会参照一些别的材料一起读，也会有自己的一些感想，可能会有很多错误，欢迎指正（然而懒惰的我并没有为博客开通评论的功能(*/ω＼*)）。这本书的第一章讲的是Android中Activity的生命周期和启动模式。o(*≧▽≦)ツ">
+<meta property="og:image" content="http://7xpjoh.com1.z0.glb.clouddn.com/android-development-art-exploration-reading-notes-1/activity_lifecycle.png">
+<meta property="og:image" content="http://7xpjoh.com1.z0.glb.clouddn.com/android-development-art-exploration-reading-notes-1/basic-lifecycle.png">
+<meta property="og:image" content="http://7xpjoh.com1.z0.glb.clouddn.com/android-development-art-exploration-reading-notes-1/basic-lifecycle-savestate.png">
+<meta property="og:image" content="http://7xpjoh.com1.z0.glb.clouddn.com/android-development-art-exploration-reading-notes-1/diagram_backstack_singletask_multiactivity.png">
+<meta property="og:updated_time" content="2016-05-01T11:46:03.431Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《Android开发艺术探索》笔记 1">
+<meta name="twitter:description" content="终于开始动手写博客啦，那么就先从《Android开发艺术探索》这本书开始读吧，主要还是做笔记，还会参照一些别的材料一起读，也会有自己的一些感想，可能会有很多错误，欢迎指正（然而懒惰的我并没有为博客开通评论的功能(*/ω＼*)）。这本书的第一章讲的是Android中Activity的生命周期和启动模式。o(*≧▽≦)ツ">
+<meta name="twitter:image" content="http://7xpjoh.com1.z0.glb.clouddn.com/android-development-art-exploration-reading-notes-1/activity_lifecycle.png">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://550756134.github.io/assets/images/misaka.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-xo7nhpmdpc1dtnu6v2tbazfirrvymcon1vt4izjnjydyzn2wo9jwylinqzgi.min.css">
+    <!--STYLES END-->
+    
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">特仑苏的学习笔记</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="#search">
+        
+        
+            <img class="header-picture" src="/assets/images/misaka.jpg"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/misaka.jpg"/>
+            </a>
+            <span class="sidebar-profile-name">特仑苏</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-circle-thin"></i>
+                    <span class="sidebar-button-desc">首页</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">标签</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bars"></i>
+                    <span class="sidebar-button-desc">归档</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/550756134" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            《Android开发艺术探索》笔记 1
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Wed Apr 27 2016 13:52:13 GMT+0800">
+	
+		    4月 27, 2016
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>　　终于开始动手写博客啦，那么就先从《Android开发艺术探索》这本书开始读吧，主要还是做笔记，还会参照一些别的材料一起读，也会有自己的一些感想，可能会有很多错误，欢迎指正（然而懒惰的我并没有为博客开通评论的功能(*/ω＼*)）。这本书的第一章讲的是Android中Activity的生命周期和启动模式。o(*≧▽≦)ツ</p>
+<a id="more"></a>
+<h2 id="1-1-Activity的生命周期全面分析"><a href="#1-1-Activity的生命周期全面分析" class="headerlink" title="1.1 Activity的生命周期全面分析"></a>1.1 Activity的生命周期全面分析</h2><h3 id="1-1-1-典型情况下的生命周期分析"><a href="#1-1-1-典型情况下的生命周期分析" class="headerlink" title="1.1.1 典型情况下的生命周期分析"></a>1.1.1 典型情况下的生命周期分析</h3><p>下面的Activity生命周期图是我从Activity的<a href="https://developer.android.com/intl/zh-cn/reference/android/app/Activity.html#ActivityLifecycle" target="_blank" rel="external">API reference</a>里面扒下来的，如下图：</p>
+<p><img src="http://7xpjoh.com1.z0.glb.clouddn.com/android-development-art-exploration-reading-notes-1/activity_lifecycle.png" alt="activity-lifecycle"></p>
+<p>还有一种是金字塔状的，在Android的<a href="https://developer.android.com/intl/zh-cn/training/basics/activity-lifecycle/starting.html#lifecycle-states" target="_blank" rel="external">Training</a>里可以找到，如下图：</p>
+<p><img src="http://7xpjoh.com1.z0.glb.clouddn.com/android-development-art-exploration-reading-notes-1/basic-lifecycle.png" alt="basic-cycle"></p>
+<p>第一个张图更加详细的说明了Activity的生命周期，而第二张图更加简明，但可以直观的了解到Activity的状态和可视程度的关系。</p>
+<p>1.当当前Activity从不可见状态切换到可见状态时，<code>onRestart()</code>就会被调用。</p>
+<p>2.<code>onStart()</code>表示Activity正在被启动，这时Activity已经可见了，但还没有出现在前台。（查看<a href="https://developer.android.com/intl/zh-cn/reference/android/app/Activity.html#ActivityLifecycle" target="_blank" rel="external">API reference</a>可以知道，Activity的visible lifetime就是在调用<code>onStart()</code>直到调用<code>onStop()</code>之间。）onResume的时候Activity菜显示到前台（Activity的foreground lifetime就是在调用<code>onResume()</code>直到调用<code>onPause()</code>之间）。</p>
+<p>3.当用户打开新的Activity获知切换到桌面时候，回调如下<code>onPause()</code>-&gt;<code>onStop()</code> 。这里有一种特殊情况，如果新Activity采用了透明主题，那么原Activity不会回调<code>onStop()</code> ，因为原Activity依然可见，所以一般情况下不会调用<code>onStop()</code>。</p>
+<p>4.在<code>onPause()</code>中不能执行重量级操作，因为要在原Activity的<code>onPause()</code>执行完之后新的Activity的<code>onResume()</code>才会执行。</p>
+<h3 id="1-1-2-异常情况下的生命周期分析"><a href="#1-1-2-异常情况下的生命周期分析" class="headerlink" title="1.1.2 异常情况下的生命周期分析"></a>1.1.2 异常情况下的生命周期分析</h3><p>在<a href="https://developer.android.com/intl/zh-cn/training/basics/activity-lifecycle/recreating.html" target="_blank" rel="external">Training</a>里面找到下图，展示了系统停止Activity和Activity重新创建时的方法调用，这篇<a href="http://developer.android.com/intl/zh-cn/guide/topics/resources/runtime-changes.html" target="_blank" rel="external">API Guide</a>讲了运行时配置变更时Activity的处理：</p>
+<p><img src="http://7xpjoh.com1.z0.glb.clouddn.com/android-development-art-exploration-reading-notes-1/basic-lifecycle-savestate.png" alt="basic-lifecycle-savestate"></p>
+<p>1.默认情况下，资源相关的系统配置发生改变会导致Activity被杀死并重新创建，比如旋转屏幕。</p>
+<p>2.<code>onSaveInstanceState()</code>只会出现在Activity被异常中止的情况下，正常情况下系统不会回调这个方法。当Activity被重新创建后，系统会调用<code>onRestoreInstanceState()</code>并且吧Activity销毁时<code>onSaveInstanceState()</code>所保存的Bundle对象作为参数传递给<code>onRestoreInstanceState()</code>和<code>onCreate()</code>方法。<code>onRestoreInstanceState()</code>的调用时机在<code>onStart()</code>之后。</p>
+<p>3.资源内存不足导致优先级低的Activity被杀死。优先级从高到低，分为如下三种：</p>
+<p>（1）前台Activity：正在和用户交互的Activity，优先级最高。</p>
+<p>（2）可见但非前台的Activity：比如Activity中弹出来一个对话框，导致Activity可见但位于后台无法直接与用户交互。</p>
+<p>（3）后台Activity：已经被暂停的Activity，比如执行了<code>onStop()</code>，优先级最低。</p>
+<p>当系统内存不足时，系统会按照上述优先级杀死目标Activity所在的进程。如果一个进程中没有四大组件在运行，那么这个进程将很快被系统杀死。</p>
+<p>4.设置android:configChanges属性可以阻止在运行时某些配置变更导致Activity重启，翻了下<code>&lt;activity&gt;</code> 元素的属性<a href="http://developer.android.com/intl/zh-cn/guide/topics/manifest/activity-element.html#config" target="_blank" rel="external">API Guide</a>，大概就是说默认情况下配置在运行时变更时，默认情况下Activity会被关闭重启，但如果设置了这个属性代表这里面的配置变更时由Activity自己来处理，配置在运行时变更时Activity的重启就会被阻止，并且会回调<code>onConfigurationChanged()</code>，但是这样你就要自己手动更新Activity，这个方法应该在不得已而为之的时候作为最后手段来使用。</p>
+<p>5.android:configChanges属性常用的值有locale、orientation和keyboardHidden这三个选项，其他使用的很少。</p>
+<p>locale：设备的本地位置发生了改变，一般只切换了系统语言。</p>
+<p>orientation：屏幕的方向发生了改变，这个是最常用的，比如旋转了手机屏幕。在API Guide里还提示了如果应用的API level是13或以上（minSdkVersion和targetSdkVersion）那么你应该还要加上screenSize，因为这个配置也会因为屏幕的方向改变而发生变化。</p>
+<h2 id="1-2-Activity的启动模式"><a href="#1-2-Activity的启动模式" class="headerlink" title="1.2 Activity的启动模式"></a>1.2 Activity的启动模式</h2><h3 id="1-2-1-Activity的LaunchMode"><a href="#1-2-1-Activity的LaunchMode" class="headerlink" title="1.2.1 Activity的LaunchMode"></a>1.2.1 Activity的LaunchMode</h3><p>1.默认情况下，当我们多次启动同一个Activity的时候，系统会创建多个实例并把它们一一放入任务栈中，当我们单击back键，会发现Activity会一一回退。当栈中无任何Activity的时候，系统就会回收这个任务栈。</p>
+<p>2.目前有四种启动模式：standard、singleTop、singleTask和singleInstance</p>
+<p>（1）standard：标准模式，也是系统的默认模式。每次启动一个Activity都会重新创建一个新的实例，不管这个实例是否已经存在。这个模式下，谁启动了这个Activity，那么这个Activity就运行在启动它的那个Activity所在的栈中。</p>
+<p>（2）singleTop：栈顶复用模式。在这模式下，如果新Activity已经位于任务栈的栈顶，那么此Activity不会被重新创建，同时它的<code>onNewIntent()</code>会被回调，这个Activity的<code>onCreate()</code>和<code>onStart()</code>不会被回调，因为它并没有发生改变。如果新的Activity的实例已存在但不在栈顶，那么这个新Activity仍然会被重新创建。</p>
+<p>（3）singleTask：栈内复用模式。这种模式下，只要Activity在一个栈中存在，那么多次启动此Activity都不会重新创建实例，系统会回调<code>onNewIntent()</code>。</p>
+<p>当一个具有singleTask模式的Activity请求启动后，系统就会寻找这个Activity需要的任务栈，</p>
+<ul>
+<li>如果任务栈不存在，就重新创建一个任务栈，然后把Activity压入栈中，</li>
+<li>如果任务栈存在，查看Activity是否在栈中存在实例，<ul>
+<li>如果实例存在，那么系统就会把Activity调到栈顶并调用它的<code>onNewIntent()</code>方法，由于singleTask默认具有clearTop的效果，所以会将这个Activity实例上面的Activity全部出栈，</li>
+<li>如果实例不存在，那么就创建Activity的实例并压入栈中。</li>
+</ul>
+</li>
+</ul>
+<p>下图是在<a href="http://developer.android.com/intl/zh-cn/guide/components/tasks-and-back-stack.html" target="_blank" rel="external">API Guide</a>中找来的：</p>
+<p><img src="http://7xpjoh.com1.z0.glb.clouddn.com/android-development-art-exploration-reading-notes-1/diagram_backstack_singletask_multiactivity.png" alt="diagram-backstack-singletask-multiactivity"></p>
+<p>这张图展示了当singleTask的Activity被启动时，如果 Activity 已经是某个后台任务栈的一部分，则整个后台任务栈都会被切换到前台。</p>
+<p>（4）singleInstance：单实例模式。这是一种加强的singleTask模式，它除了具有singleTask模式的所有特性外，还加强了一点，就是具有此种模式的Activity只能单独地位于一个任务栈中，由于栈内复用的特性，后续的请求均不会创建新的Activity，除非这个独特的任务被系统销毁了。（一个萝卜一个坑，一个Activity一个栈（雾））</p>
+<p>3.从非Activity类型的Context中去启动standard模式的Activity是不可以的，因为非Activity的Context没有所谓的任务栈，所以这就会有问题，但是为待启动的Activity指定FLAG_ACTIVITY_NEW_TASK标记位就可以解决了，因为样启动的时候会为它创建一个新的任务栈。</p>
+<p>4.默认情况下，所有Activity的所需的任务栈的名字为应用的包名。</p>
+<p>5.android:taskAffinity属性用来指定Activity的所需的任务栈，可以译为任务相关性。taskAffinity属性主要和singleTask启动模式或allowTaskReparenting属性配对使用，在其他情况下没有意义。</p>
+<p>6.任务栈分为前台任务栈和后台任务栈，后台任务栈中的Activity位于暂停状态，用户可以通过切换后台任务栈再次调到前台。</p>
+<p>7.当taskAffinity和allowTaskReparenting结合的时候，当一个应用A启动了应用B的某个Activity后，如果这个Activity的allowTaskReparenting属性为true的话，那么当应用B被启动后，此Activity会直接从应用A的任务栈转移到应用B的任务栈中。  </p>
+<p>具体点说就是，应用A启动了应用B的一个ActivityC，然后返回桌面点击应用B的图标打开应用B，一般情况下，打开应用B会显示应用B的主Activity，但是这时显示的却是ActivityC，因为应用A启动了ActivityC，所以ActivityC只能运行在应用A的任务栈中，但是ActivityC属于应用B，正常情况下，它的taskAffinity是不可能和应用A的任务栈相同（因为包名不同）。所以，当应用B启动后，应用B会创建自己的任务栈，这个时候系统发现ActrivityC原本想要的任务栈已经被创建了，所以就把ActivityC从应用A的任务栈移过来了。</p>
+<h3 id="1-2-2-Activity的Flags"><a href="#1-2-2-Activity的Flags" class="headerlink" title="1.2.2 Activity的Flags"></a>1.2.2 Activity的Flags</h3><p>1.为何不去问问神奇的<a href="https://developer.android.com/intl/zh-cn/reference/android/content/Intent.html" target="_blank" rel="external">文档</a>呢？FLAG_ACTIVITY开头的常量都是啦。</p>
+<p>2.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS，具有这个标记的Activity不会出现在历史Activity的列表中，当某些情况下我们不希望用户通过历史列表回到我们的Activity的时候这个标记比较有用。等同于<code>android:excludeFromRecents=&quot;true&quot;</code>。</p>
+<h2 id="1-3-IntentFilter的匹配规则"><a href="#1-3-IntentFilter的匹配规则" class="headerlink" title="1.3 IntentFilter的匹配规则"></a>1.3 IntentFilter的匹配规则</h2><p>1.IntentFilter（<a href="http://developer.android.com/intl/zh-cn/reference/android/content/IntentFilter.html" target="_blank" rel="external">API reference</a>、<a href="http://developer.android.com/intl/zh-cn/guide/topics/manifest/intent-filter-element.html" target="_blank" rel="external"><code>&lt;intent-filter&gt;</code></a>、<a href="http://developer.android.com/intl/zh-cn/guide/components/intents-filters.html" target="_blank" rel="external">API Guide</a>）中的过滤信息由action、category、data，为了匹配过滤列表，需要同时匹配过滤列表中的action、category、data信息，否则匹配失败。一个过滤列表中的action、category和data可以有多个，所有的action、category、data分别构成不同类别，同一类别的信息共同约束当前类别的匹配过程。只有一个Intent同时匹配action类别、category类别和data类别才算完全匹配，只有完全匹配才能成功启动目标Activity。一个Activity中可以有多个intent-filter，一个Intent只要能匹配任何一组intent-filter即可成功启动对应的Activity。</p>
+<p>2.action的匹配规则：action的匹配要求Intent中的action存在且必须和过滤规则中的其中一个action相同，另外，action区分大小写。</p>
+<p>3.category的匹配规则：Intent中如果出现了category不管有几个category，对于每个category来说它必须是过滤规则中已经定义了的category。如果Intent中没有category，那么就会匹配默认的category(“android.intent.category.DEFAULT”)。为了使activity能够接受隐式调用，就必须在intent-filter中指定”android.intent.category.DEFAULT”这个category。</p>
+<p>4.data的匹配规则：data略复杂，先上<a href="http://developer.android.com/intl/zh-cn/guide/topics/manifest/data-element.html" target="_blank" rel="external">API Guide</a>。</p>
+<p>可以看到data的语法结构如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">data</span> <span class="attr">android:scheme</span>=<span class="string">"string"</span></span></div><div class="line">      <span class="attr">android:host</span>=<span class="string">"string"</span></div><div class="line">      <span class="attr">android:port</span>=<span class="string">"string"</span></div><div class="line">      <span class="attr">android:path</span>=<span class="string">"string"</span></div><div class="line">      <span class="attr">android:pathPattern</span>=<span class="string">"string"</span></div><div class="line">      <span class="attr">android:pathPrefix</span>=<span class="string">"string"</span></div><div class="line">      <span class="attr">android:mimeType</span>=<span class="string">"string"</span> /&gt;</div></pre></td></tr></table></figure>
+<p>看描述可以知道，这个元素可以用来只定义mimeType或只定义URI或两者同时定义。</p>
+<p>URI的结构如下：</p>
+<p><code>&lt;scheme&gt;://&lt;host&gt;:&lt;port&gt;[&lt;path&gt;|&lt;pathPrefix&gt;|&lt;pathPattern&gt;]</code></p>
+<p>scheme、host、port分别代表URI的模式、主机名、和端口号。</p>
+<p>path、pathPrefix、pathPattern这三个参数表述路径信息，其中path表示完整的路径信息，pathPrefix也表示完整的路径信息，但是它里面可以包含通配符“*”，“*”表示0个或者多个字符，pathPattern表示路径的前缀信息。</p>
+<p>如果过滤规则只指定了mimeType而没有指定URI，那么URI有默认的scheme的值，content和file。</p>
+<p>如果要为Intent指定完整的data，必须要调用<code>setDataAndType()</code>，不能单独调用<code>setDate()</code>或<code>setType()</code>，因为这两个方法会清除对方的值。</p>
+<p>5.当我们通过隐式方式启动一个Activity的时候，可以先进行判断是否有Activity能够匹配我们的隐式Intent。匹配方法有两种：</p>
+<p>（1）采用PackageManager的<code>resolveActivity()</code>方法或者Intent的<code>resolveActivity()</code>方法，如果找不到就会返回null。</p>
+<p>（2）PackageManager的<code>queryIntentActivities()</code>，它返回所有成功匹配的Activity信息。</p>
+<p>#EOF</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">标签</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Android/">Android</a> <a class="tag tag--primary tag--small t-link" href="/tags/《Android开发艺术探索》/">《Android开发艺术探索》</a> <a class="tag tag--primary tag--small t-link" href="/tags/笔记/">笔记</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/08/11/singleton-in-java/"  data-tooltip="JAVA中的单例实现">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/04/25/i-am-lazy/" data-tooltip="我好懒_(:3」∠)_">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://550756134.github.io/2016/04/27/android-development-art-exploration-reading-notes-1/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <!-- <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://550756134.github.io/2016/04/27/android-development-art-exploration-reading-notes-1/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li> -->
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://550756134.github.io/2016/04/27/android-development-art-exploration-reading-notes-1/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <!-- <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享到微信" href="http://www.jiathis.com/send/?webid=weixin&amp;url=http://550756134.github.io/2016/04/27/android-development-art-exploration-reading-notes-1/&amp;title=《Android开发艺术探索》笔记 1&amp;uid=2110308"> -->
+            <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享到微信" href="http://api.bshare.cn/share/weixin?url=http://550756134.github.io/2016/04/27/android-development-art-exploration-reading-notes-1/">
+                <i class="fa fa-weixin"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+        
+            
+        
+    </div>
+</article>
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2016 特仑苏. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/08/11/singleton-in-java/"  data-tooltip="JAVA中的单例实现">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/04/25/i-am-lazy/" data-tooltip="我好懒_(:3」∠)_">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://550756134.github.io/2016/04/27/android-development-art-exploration-reading-notes-1/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <!-- <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://550756134.github.io/2016/04/27/android-development-art-exploration-reading-notes-1/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li> -->
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://550756134.github.io/2016/04/27/android-development-art-exploration-reading-notes-1/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <!-- <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享到微信" href="http://www.jiathis.com/send/?webid=weixin&amp;url=http://550756134.github.io/2016/04/27/android-development-art-exploration-reading-notes-1/&amp;title=《Android开发艺术探索》笔记 1&amp;uid=2110308"> -->
+            <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享到微信" href="http://api.bshare.cn/share/weixin?url=http://550756134.github.io/2016/04/27/android-development-art-exploration-reading-notes-1/">
+                <i class="fa fa-weixin"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://550756134.github.io/2016/04/27/android-development-art-exploration-reading-notes-1/">
+                <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
+            </a>
+        </li>
+        <!-- <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://550756134.github.io/2016/04/27/android-development-art-exploration-reading-notes-1/">
+                <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+            </a>
+        </li> -->
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://550756134.github.io/2016/04/27/android-development-art-exploration-reading-notes-1/">
+                <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+            </a>
+        </li>
+        <!-- <li class="share-option">
+            <a class="share-option-btn" target="new" href="http://www.jiathis.com/send/?webid=weixin&amp;url=http://550756134.github.io/2016/04/27/android-development-art-exploration-reading-notes-1/&amp;title=《Android开发艺术探索》笔记 1&amp;uid=2110308">
+                <i class="fa fa-weixin"></i><span>分享到微信</span>
+            </a>
+        </li> -->
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/misaka.jpg"/>
+        
+            <h4 id="about-card-name">特仑苏</h4>
+        
+            <h5 id="about-card-bio"><p>不是牛奶！</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>学生仔</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                China
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('http://7xpjoh.com1.z0.glb.clouddn.com/theme-source/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/scrip-xjvo1pxsqdqob5t3wfpikh7pixrueadcs1qcwelnnoo0hany8oidadyfbqpf.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+</html>

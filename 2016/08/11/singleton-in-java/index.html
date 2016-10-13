@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="特仑苏的学习笔记">
+    <title>JAVA中的单例实现 - 特仑苏的学习笔记</title>
+    <meta name="author" content="特仑苏">
+    
+    
+        <link rel="icon" href="http://550756134.github.io/assets/images/favicon.ico">
+    
+    
+    <meta name="description" content="有时候，我们需要确保一个类只有一个实例的时候，我们就会用到单例模式。">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="JAVA中的单例实现">
+<meta property="og:url" content="http://550756134.github.io/2016/08/11/singleton-in-java/index.html">
+<meta property="og:site_name" content="特仑苏的学习笔记">
+<meta property="og:description" content="有时候，我们需要确保一个类只有一个实例的时候，我们就会用到单例模式。">
+<meta property="og:updated_time" content="2016-08-12T05:51:27.734Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA中的单例实现">
+<meta name="twitter:description" content="有时候，我们需要确保一个类只有一个实例的时候，我们就会用到单例模式。">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://550756134.github.io/assets/images/misaka.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-xo7nhpmdpc1dtnu6v2tbazfirrvymcon1vt4izjnjydyzn2wo9jwylinqzgi.min.css">
+    <!--STYLES END-->
+    
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">特仑苏的学习笔记</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="#search">
+        
+        
+            <img class="header-picture" src="/assets/images/misaka.jpg"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/misaka.jpg"/>
+            </a>
+            <span class="sidebar-profile-name">特仑苏</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-circle-thin"></i>
+                    <span class="sidebar-button-desc">首页</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">标签</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bars"></i>
+                    <span class="sidebar-button-desc">归档</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/550756134" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            JAVA中的单例实现
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Thu Aug 11 2016 21:54:18 GMT+0800">
+	
+		    8月 11, 2016
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>有时候，我们需要确保一个类只有一个实例的时候，我们就会用到单例模式。</p>
+<a id="more"></a>
+<p>实现单例有以下几个关键点：</p>
+<ol>
+<li>构造函数不对外开放（private）。</li>
+<li>通过一个静态方法或枚举返回实例。</li>
+<li>保证单例对象有且只有一个。</li>
+<li>确保反序列化时不会重新创建对象。</li>
+</ol>
+<h4 id="饿汉模式"><a href="#饿汉模式" class="headerlink" title="饿汉模式"></a>饿汉模式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();</div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123; &#125;</div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> INSTANCE;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>非常典型的单例模式，对象在声明的时候就已经初始化了。</p>
+<h4 id="懒汉模式（Double-Check-Lock实现）"><a href="#懒汉模式（Double-Check-Lock实现）" class="headerlink" title="懒汉模式（Double Check Lock实现）"></a>懒汉模式（Double Check Lock实现）</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton sInstance = <span class="keyword">null</span>;</div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123; &#125;</div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(sInstance == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</div><div class="line">                <span class="keyword">if</span> (sInstance == <span class="keyword">null</span>) &#123;</div><div class="line">                    sInstance = <span class="keyword">new</span> Singleton();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sInstance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>DCL的懒汉模式，既能够在需要的时候初始化，又能保证线程安全，而且单例对象初始化后调用getInstance()不进行同步锁。当然要注意volatile这个关键字只有JDK5或之后才对DCL的实现有意义。在第一次执行getInstance()时单例对象才会被实例化，但第一次加载反应稍慢。也由于Java内存模型的原因会偶尔失败，虽然发生概率很小。</p>
+<h4 id="静态内部类单例模式"><a href="#静态内部类单例模式" class="headerlink" title="静态内部类单例模式"></a>静态内部类单例模式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123; &#125;</div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> SingletonHolder.sInstance;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span> </span>&#123;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在第一次调用getInstance()的时候才会初始化INSTANCE，不但线程安全，而且延迟了单例的实例化。</p>
+<h4 id="枚举单例"><a href="#枚举单例" class="headerlink" title="枚举单例"></a>枚举单例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton &#123;</div><div class="line">    INSTANCE;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>看过《Effective Java》应该对这种单例模式不陌生了，第一次看到这种实现还真是眼前一亮，枚举能有字段还能有方法，最重要的是枚举实例的创建默认是线程安全的，并且在任何情况下都是单例。</p>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>在开头我们提到了实现单例的4个关键点，最后一点是”确保反序列化时不会重新创建对象。”，在上面所有的单例实现中，我们都要添加readResolve()来控制对象的反序列化，让他们直接返回单例对象实例。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> Object <span class="title">readResolve</span><span class="params">()</span> <span class="keyword">throws</span> ObjectStreamException </span>&#123;</div><div class="line">    <span class="keyword">return</span> sInstance;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="使用容器实现单例"><a href="#使用容器实现单例" class="headerlink" title="使用容器实现单例"></a>使用容器实现单例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonManager</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Map&lt;String, Object&gt; objMap = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonManager</span><span class="params">()</span> </span>&#123; &#125;</div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">registerSingleton</span><span class="params">(String key, Object instance)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (!objMap.containsKey(key)) &#123;</div><div class="line">            objMap.put(key, instance);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getSingleton</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> objMap.get(key);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这是一个比较另类的实现，在程序的初始，将多种单例类型注入到一个统一的管理类中，在使用时根据key来获取对象。这种方式可以管理多种类型的单例，并且在使用的时候可以通过统一的接口进行获取操作。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>不管用哪种方式实现单例，其核心都是构造函数私有化、通过静态方法获取唯一的实例、保证线程安全和防止反序列化导致重新生成实例对象，按照需求和条件选择适合单例的实现。</p>
+<p>#EOF</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">标签</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Java/">Java</a> <a class="tag tag--primary tag--small t-link" href="/tags/笔记/">笔记</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/09/08/tiny-noty-1-0-release/"  data-tooltip="小通知（Tiny Noty）发布">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/04/27/android-development-art-exploration-reading-notes-1/" data-tooltip="《Android开发艺术探索》笔记 1">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://550756134.github.io/2016/08/11/singleton-in-java/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <!-- <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://550756134.github.io/2016/08/11/singleton-in-java/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li> -->
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://550756134.github.io/2016/08/11/singleton-in-java/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <!-- <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享到微信" href="http://www.jiathis.com/send/?webid=weixin&amp;url=http://550756134.github.io/2016/08/11/singleton-in-java/&amp;title=JAVA中的单例实现&amp;uid=2110308"> -->
+            <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享到微信" href="http://api.bshare.cn/share/weixin?url=http://550756134.github.io/2016/08/11/singleton-in-java/">
+                <i class="fa fa-weixin"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+        
+            
+        
+    </div>
+</article>
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2016 特仑苏. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/09/08/tiny-noty-1-0-release/"  data-tooltip="小通知（Tiny Noty）发布">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/04/27/android-development-art-exploration-reading-notes-1/" data-tooltip="《Android开发艺术探索》笔记 1">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://550756134.github.io/2016/08/11/singleton-in-java/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <!-- <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://550756134.github.io/2016/08/11/singleton-in-java/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li> -->
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://550756134.github.io/2016/08/11/singleton-in-java/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <!-- <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享到微信" href="http://www.jiathis.com/send/?webid=weixin&amp;url=http://550756134.github.io/2016/08/11/singleton-in-java/&amp;title=JAVA中的单例实现&amp;uid=2110308"> -->
+            <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享到微信" href="http://api.bshare.cn/share/weixin?url=http://550756134.github.io/2016/08/11/singleton-in-java/">
+                <i class="fa fa-weixin"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://550756134.github.io/2016/08/11/singleton-in-java/">
+                <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
+            </a>
+        </li>
+        <!-- <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://550756134.github.io/2016/08/11/singleton-in-java/">
+                <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+            </a>
+        </li> -->
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://550756134.github.io/2016/08/11/singleton-in-java/">
+                <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+            </a>
+        </li>
+        <!-- <li class="share-option">
+            <a class="share-option-btn" target="new" href="http://www.jiathis.com/send/?webid=weixin&amp;url=http://550756134.github.io/2016/08/11/singleton-in-java/&amp;title=JAVA中的单例实现&amp;uid=2110308">
+                <i class="fa fa-weixin"></i><span>分享到微信</span>
+            </a>
+        </li> -->
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/misaka.jpg"/>
+        
+            <h4 id="about-card-name">特仑苏</h4>
+        
+            <h5 id="about-card-bio"><p>不是牛奶！</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>学生仔</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                China
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('http://7xpjoh.com1.z0.glb.clouddn.com/theme-source/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/scrip-xjvo1pxsqdqob5t3wfpikh7pixrueadcs1qcwelnnoo0hany8oidadyfbqpf.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+</html>

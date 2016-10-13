@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="特仑苏的学习笔记">
+    <title>小通知（Tiny Noty）发布 - 特仑苏的学习笔记</title>
+    <meta name="author" content="特仑苏">
+    
+    
+        <link rel="icon" href="http://550756134.github.io/assets/images/favicon.ico">
+    
+    
+    <meta name="description" content="Tiny Noty是一个通知栏备忘小工具，可以让你的备忘录停留在通知栏上，支持开机自启动，Android4.1（Jelly Bean API16 ）以上支持多行显示，当然要是你的ROM允许通知栏多行和开机自启动才行，原生或CM系统可以获得最佳体验。这篇主要写点感想。">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="小通知（Tiny Noty）发布">
+<meta property="og:url" content="http://550756134.github.io/2016/09/08/tiny-noty-1-0-release/index.html">
+<meta property="og:site_name" content="特仑苏的学习笔记">
+<meta property="og:description" content="Tiny Noty是一个通知栏备忘小工具，可以让你的备忘录停留在通知栏上，支持开机自启动，Android4.1（Jelly Bean API16 ）以上支持多行显示，当然要是你的ROM允许通知栏多行和开机自启动才行，原生或CM系统可以获得最佳体验。这篇主要写点感想。">
+<meta property="og:image" content="http://7xpjoh.com1.z0.glb.clouddn.com/tiny-noty-1-0-release/web_hi_res_512.png">
+<meta property="og:image" content="http://7xpjoh.com1.z0.glb.clouddn.com/tiny-noty-1-0-release/Screenshot_20160911-200309.png">
+<meta property="og:image" content="http://7xpjoh.com1.z0.glb.clouddn.com/tiny-noty-1-0-release/Screenshot_20160911-200328.png">
+<meta property="og:image" content="http://7xpjoh.com1.z0.glb.clouddn.com/tiny-noty-1-0-release/Screenshot_20160911-200617.png">
+<meta property="og:image" content="http://7xpjoh.com1.z0.glb.clouddn.com/tiny-noty-1-0-release/tiny-noty-release1-0-apk.png">
+<meta property="og:updated_time" content="2016-09-11T13:19:49.647Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小通知（Tiny Noty）发布">
+<meta name="twitter:description" content="Tiny Noty是一个通知栏备忘小工具，可以让你的备忘录停留在通知栏上，支持开机自启动，Android4.1（Jelly Bean API16 ）以上支持多行显示，当然要是你的ROM允许通知栏多行和开机自启动才行，原生或CM系统可以获得最佳体验。这篇主要写点感想。">
+<meta name="twitter:image" content="http://7xpjoh.com1.z0.glb.clouddn.com/tiny-noty-1-0-release/web_hi_res_512.png">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://550756134.github.io/assets/images/misaka.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-xo7nhpmdpc1dtnu6v2tbazfirrvymcon1vt4izjnjydyzn2wo9jwylinqzgi.min.css">
+    <!--STYLES END-->
+    
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">特仑苏的学习笔记</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="#search">
+        
+        
+            <img class="header-picture" src="/assets/images/misaka.jpg"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/misaka.jpg"/>
+            </a>
+            <span class="sidebar-profile-name">特仑苏</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-circle-thin"></i>
+                    <span class="sidebar-button-desc">首页</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">标签</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bars"></i>
+                    <span class="sidebar-button-desc">归档</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/550756134" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            小通知（Tiny Noty）发布
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Thu Sep 08 2016 21:50:28 GMT+0800">
+	
+		    9月 08, 2016
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>　　Tiny Noty是一个通知栏备忘小工具，可以让你的备忘录停留在通知栏上，支持开机自启动，Android4.1（Jelly Bean API16 ）以上支持多行显示，当然要是你的ROM允许通知栏多行和开机自启动才行，原生或CM系统可以获得最佳体验。这篇主要写点感想。</p>
+<a id="more"></a>
+<p>　　受到Lakor又或者叫various的大神写的《<a href="https://play.google.com/store/apps/details?id=mark.notification" target="_blank" rel="external">通知通知</a>》（<a href="http://www.coolapk.com/apk/mark.notification" target="_blank" rel="external">墙内</a>）的启发，我决定仿（shan）写（zhai）一个实现同样功能的小工具，在原有的功能上，增加了开机自启动和多行显示，这些都是《通知通知》评论用户的需求，不过作者好久都没有更新他的应用了。有点可惜的是Tiny Noty并没有像《通知通知》一样做到10多k的体积，不知道为什么图标之类的图片资源的体积就是下不去，只能做到30多k。</p>
+<p>　　本来是想体验一下应用发布的流程的，可是目前暂时还没有国际信用卡，所以注册不了谷歌开发者账号，简直悲剧，所以只能发布在博客上了，顺便记录一下开发时遇到的坑。</p>
+<h3 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h3><h5 id="1-Notification中的setLatestEventInfo"><a href="#1-Notification中的setLatestEventInfo" class="headerlink" title="1. Notification中的setLatestEventInfo()"></a>1. Notification中的setLatestEventInfo()</h5><p>虽然这个方法在API11的时候被废弃了，但是却是Android 2.x中Notification唯一的实现方法，apk体积小的其中一个要点就是尽量不引用无用的库，v4包里有兼容的NotificationCompat.Builder这样的实现，但是对于一个功能单一的小应用来说，引用这样一个库感觉不是很值，虽然一开始看到有BigTextStyle还是很心动，直到看到。。。</p>
+<blockquote>
+<p>If the platform does not provide large-format notifications, this method has no effect. The user will always see the normal notification view. </p>
+</blockquote>
+<p>直接无视。。。其实看源码就知道，其实NotificationCompat只是封装了不同API的实现，和自己写if-else实现的效果是一样的，但是用起来更加的优雅。</p>
+<p>在API11的时候Notification使用了Builder模式的实现，可是在API16的时候才添加了BigTextStyle，所以在API16以下都是只显示单行的Notification，当然有些ROM虽然是API16以上但是通知栏只让显示一行的那就没办法了。于是我决定使用setLatestEventInfo()对API16以下的系统实现Notification，IDE却提示我找不到方法，一脸懵逼，去找API文档发现ctrl+F根本找不到这个方法，我还以为是我掉进异次元了。搜索引擎一找，发现这个方法已经在API23被@remove了，我现在使用的SDK版本是24，那当然没有这个方法了，把SDK版本改到22，问题解决。</p>
+<h5 id="2-自启动"><a href="#2-自启动" class="headerlink" title="2.自启动"></a>2.自启动</h5><p>总感觉Receiver不加category就启动不了。。。</p>
+<h5 id="3-CheckBox"><a href="#3-CheckBox" class="headerlink" title="3.CheckBox"></a>3.CheckBox</h5><p>替换CheckBox的选择框要设置button属性但是background属性不能乱动，padding属性在不同API下作用也不一样。</p>
+<h5 id="4-APK体积"><a href="#4-APK体积" class="headerlink" title="4.APK体积"></a>4.APK体积</h5><p>其实整个APK文件，图片占了大头，可这都是为了对不同的屏幕进行适配，至于怎么减小体积，还是要好好研究一下。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>其实这个应用完全没啥技术水平，是个人都能写出来，本来只是为了了解和熟悉一下应用的签名和发布的过程的，顺便锻炼一下制作宣传材料的能力，一开始想到要发布一个应用还是有一点小激动呢，可惜Google Play只能以后再来考虑了。</p>
+<p>当然，分发应用的渠道不止局限于应用市场，也可以用邮件或链接的方式进行分发，但是相比于应用市场缺点就是范围不广，而且会被判定为未知来源的应用，十分难推广，不过这些都没所谓，因为这个Tiny Noty实在太没有水平了，也不需要让别人知道，可是我居然还写了那么长的博客，感觉好羞耻。。。好了，下面让我来介绍一下这个Tiny Noty吧。</p>
+<hr>
+<h1 id="Tiny-Noty"><a href="#Tiny-Noty" class="headerlink" title="Tiny Noty"></a>Tiny Noty</h1><p><img src="http://7xpjoh.com1.z0.glb.clouddn.com/tiny-noty-1-0-release/web_hi_res_512.png" alt="web_hi_res_512.png"></p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Tiny Noty是一个通知栏备忘小工具，可以让你的备忘录停留在通知栏上，支持开机自启动，点击6次对话框空白处可以显示隐藏的设置来启用自启动，Android4.1（Jelly Bean API16 ）及以上支持多行显示，ROM不支持的除外。</p>
+<h4 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h4><p><img src="http://7xpjoh.com1.z0.glb.clouddn.com/tiny-noty-1-0-release/Screenshot_20160911-200309.png" alt="Screenshot_20160911-200309.png"></p>
+<p><img src="http://7xpjoh.com1.z0.glb.clouddn.com/tiny-noty-1-0-release/Screenshot_20160911-200328.png" alt="Screenshot_20160911-200328.png"></p>
+<p><img src="http://7xpjoh.com1.z0.glb.clouddn.com/tiny-noty-1-0-release/Screenshot_20160911-200617.png" alt="Screenshot_20160911-200617.png"></p>
+<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p>链接：<a href="http://7xpjoh.com1.z0.glb.clouddn.com/tiny-noty-1-0-release/tiny-noty-release-1-0.apk" target="_blank" rel="external">http://7xpjoh.com1.z0.glb.clouddn.com/tiny-noty-1-0-release/tiny-noty-release-1-0.apk</a></p>
+<p>二维码：</p>
+<p><img src="http://7xpjoh.com1.z0.glb.clouddn.com/tiny-noty-1-0-release/tiny-noty-release1-0-apk.png" alt="tiny-noty-release1-0-apk.png"></p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">标签</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Android/">Android</a> <a class="tag tag--primary tag--small t-link" href="/tags/感想/">感想</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/08/11/singleton-in-java/" data-tooltip="JAVA中的单例实现">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://550756134.github.io/2016/09/08/tiny-noty-1-0-release/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <!-- <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://550756134.github.io/2016/09/08/tiny-noty-1-0-release/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li> -->
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://550756134.github.io/2016/09/08/tiny-noty-1-0-release/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <!-- <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享到微信" href="http://www.jiathis.com/send/?webid=weixin&amp;url=http://550756134.github.io/2016/09/08/tiny-noty-1-0-release/&amp;title=小通知（Tiny Noty）发布&amp;uid=2110308"> -->
+            <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享到微信" href="http://api.bshare.cn/share/weixin?url=http://550756134.github.io/2016/09/08/tiny-noty-1-0-release/">
+                <i class="fa fa-weixin"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+        
+            
+        
+    </div>
+</article>
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2016 特仑苏. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/08/11/singleton-in-java/" data-tooltip="JAVA中的单例实现">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://550756134.github.io/2016/09/08/tiny-noty-1-0-release/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <!-- <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://550756134.github.io/2016/09/08/tiny-noty-1-0-release/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li> -->
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://550756134.github.io/2016/09/08/tiny-noty-1-0-release/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <!-- <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享到微信" href="http://www.jiathis.com/send/?webid=weixin&amp;url=http://550756134.github.io/2016/09/08/tiny-noty-1-0-release/&amp;title=小通知（Tiny Noty）发布&amp;uid=2110308"> -->
+            <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享到微信" href="http://api.bshare.cn/share/weixin?url=http://550756134.github.io/2016/09/08/tiny-noty-1-0-release/">
+                <i class="fa fa-weixin"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://550756134.github.io/2016/09/08/tiny-noty-1-0-release/">
+                <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
+            </a>
+        </li>
+        <!-- <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://550756134.github.io/2016/09/08/tiny-noty-1-0-release/">
+                <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+            </a>
+        </li> -->
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://550756134.github.io/2016/09/08/tiny-noty-1-0-release/">
+                <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+            </a>
+        </li>
+        <!-- <li class="share-option">
+            <a class="share-option-btn" target="new" href="http://www.jiathis.com/send/?webid=weixin&amp;url=http://550756134.github.io/2016/09/08/tiny-noty-1-0-release/&amp;title=小通知（Tiny Noty）发布&amp;uid=2110308">
+                <i class="fa fa-weixin"></i><span>分享到微信</span>
+            </a>
+        </li> -->
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/misaka.jpg"/>
+        
+            <h4 id="about-card-name">特仑苏</h4>
+        
+            <h5 id="about-card-bio"><p>不是牛奶！</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>学生仔</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                China
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('http://7xpjoh.com1.z0.glb.clouddn.com/theme-source/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/scrip-xjvo1pxsqdqob5t3wfpikh7pixrueadcs1qcwelnnoo0hany8oidadyfbqpf.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+</html>
